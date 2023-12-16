@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Ajouter une nouvelle catégorie</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Ajouter une nouvelle catégorie</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+    <h1>Ajouter une nouvelle catégorie</h1>
+<br>
+<br>
+    {{ include('categtrans/_form.html.twig') }}
+
+    <a href="{{ path('app_categtrans_index') }}" style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px; text-decoration: none; margin-right: 20px;">Retour</a>
+{% endblock %}

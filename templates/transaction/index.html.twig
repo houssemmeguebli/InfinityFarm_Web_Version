@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Transactions</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Transactions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<body>
+<div class="container mt-4">
+
+    <div style="margin: 20px;">
+        <h1 style="color: #8FB31D;">Les Transactions</h1>
+        <br>
+    <p style="font-size: 24px; text-align: center; ">Vous avez {{ difference }} dt dans votre caisse</p>
+        {# Exemple dans un fichier Twig #}
+<form action="{{ path('app_transaction_index') }}" method="get">
+    <label for="category">Catégorie :</label>
+    <input type="text" name="category" id="category">
+
+    <label for="type">Type :</label>
+    <input type="text" name="type" id="type">
+
+    <label for="startDate">Date de début :</label>
+    <input type="date" name="startDate" id="startDate">
+
+    <label for="endDate">Date de fin :</label>
+    <input type="date" name="endDate" id="endDate">
+
+<button type="submit"  style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;">Rechercher</button></form>
+
+
+            <br>
+        <table class="table" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color: #3D3635; color: white;">
+                    <th>Catégorie Transaction</th>
+                    <th>Type Transaction</th>
+                    <th>Date Transaction</th>
+                    <th>Montant</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td>{{ transaction.categTra }}</td>
+                    <td>{{ transaction.typeTra }}</td>
+                    <td>{{ transaction.dateTra ? transaction.dateTra|date('Y-m-d') : '' }}</td>
+                    <td>{{ transaction.montant }}</td>
+                    <td>
+                        <button style="background-color: #4863A0; color: white; border: none; border-radius: 5px; padding: 8px 12px; margin-right: 5px;" onclick="window.location.href='{{ path('app_transaction_show', {'idTra': transaction.idTra}) }}'">Afficher</button>
+                        <button style="background-color: #CB6D51; color: white; border: none; border-radius: 5px; padding: 8px 12px;" onclick="window.location.href='{{ path('app_transaction_edit', {'idTra': transaction.idTra}) }}'">Modifier</button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center;">Aucun enregistrement trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <button style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;" onclick="window.location.href='{{ path('app_transaction_new') }}'">Ajouter</button>
+        <a style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;" href="{{ path('generate_pdf') }}" target="_blank">Générer PDF</a>
+        <a style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;" href="{{ path('app_home') }}" target="_blank">Poser une question</a>
+        <a style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;" href="{{ path('app_statcaisse') }}" target="_blank">voir les statistiques</a>
+    </div>
+</div>
+
+</body>
+{% endblock %}
+
+
+

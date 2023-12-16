@@ -1,0 +1,52 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+# config/services.yaml
+
+parameters:
+    profile_images_directory: '%kernel.project_dir%/public/uploads/profile_images'
+    bad_words_list:
+        - stupid
+        - monkey
+        - donkey
+
+
+
+services:
+    App\Service\MailService:
+        arguments:
+            $mailer: '@Symfony\Component\Mailer\MailerInterface'
+
+
+    App\Controller\BannedUserManager:
+        class: App\Controller\BannedUserManager
+
+    App\Service\PdfGenerator:
+        arguments:
+            $pdf: '@knp_snappy.pdf'
+            $twig: '@twig'
+    
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+    App\Service\SmsService:
+        arguments:
+            $twilioSid: '%env(TWILIO_SID)%'
+            $twilioAuthToken: '%env(TWILIO_AUTH_TOKEN)%'
+            $twilioFromNumber: '%env(TWILIO_FROM_NUMBER)%'
+    App\Service\ProfanityFilter:
+        arguments: [ '%bad_words_list%' ]
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

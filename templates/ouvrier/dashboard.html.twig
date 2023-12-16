@@ -1,0 +1,118 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord ouvrier{% endblock %}
+{% block header %}
+
+{% endblock %}
+
+{% block contenu %}
+    <br>
+    <br>
+    <br>
+    <h1>Bienvenue dans votre espace ouvrier</h1>
+    <br>
+    <br>
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Activité</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">activite</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container mt-4">
+        <h1 class="m-0 text-center mb-4" style="font-size: 24px;">Liste des activités</h1>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Objet de l'activité</th>
+                    <th>Description de l'activité</th>
+                    <th>Distinataire</th>
+                    <th>Espèce de ressource</th>
+                    <th>État de l'activité</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for activite in activites %}
+                    <tr>
+                        <td>{{ activite.objetact }}</td>
+                        <td>{{ activite.descriptionact }}</td>
+                        <td>{{ activite.distact }}</td>
+                        <td>{{ activite.speciesres }}</td>
+                        <td style="background-color: {% if activite.etatact == 'en attente' %}lightcoral{% elseif activite.etatact == 'terminé' %}palegreen{% endif %}">{{ activite.etatact }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">No activities found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="text-center">
+            {{ knp_pagination_render(activites, '@KnpPaginator/Pagination/sliding.html.twig', {
+                'pageRange': 10,
+                'align': 'center',
+                'urlTemplate': path('app_ouvrier_index') ~ '?page={{ page }}',
+                'extraProximities': 2
+            }) }}
+        </div>
+        <br>
+    </div>
+
+
+    {% block styles %}
+        <style>
+            .profile-image-container {
+                position: fixed;
+                top: 0;
+                right: 0;
+                margin: 10px;
+                width: 65px; /* Ajustez la largeur selon vos besoins */
+                height: 65px; /* Ajustez la hauteur selon vos besoins */
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .profile-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .default-profile-image {
+                /* Styles pour une image par défaut si nécessaire */
+                width: 100%;
+                height: 100%;
+                background-color: #f0f0f0; /* Couleur de fond par défaut */
+            }
+        </style>
+    {% endblock %}
+
+    {% block corps %}
+        {# Votre contenu existant #}
+        <a href="/logout" class="btn btn-danger">Déconnexion</a>
+
+
+
+    {% endblock %}
+
+
+
+
+    {# Ajoutez d'autres éléments spécifiques à l'agriculteur #}
+
+
+{% endblock %}

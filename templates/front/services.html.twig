@@ -1,0 +1,155 @@
+
+{% extends 'base.html.twig' %}
+{% block contenu %}
+
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Services</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Services</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Service Start -->
+<br>
+<br>
+<br>
+<div class="container text-center mt-5">
+    <div class="alert alert-success" role="alert">
+        <br>
+        <h4 class="alert-heading">Bienvenue dans votre espace de gestion !</h4>
+        <p>Découvrez toutes les fonctionnalités pour prendre le contrôle de vos ressources.</p>
+    </div>
+</div>
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 8px;">Vos Gestions</h6>
+
+        </div>
+        <div class="row">
+
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_parc_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Parc</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des parcs vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_materiel_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Matériels</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des matériel vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_terrain_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Terrains</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des terrains vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_activite_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Activités</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des activités vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_ressource_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Ressources</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des ressources vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_transaction_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Transactions</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des Transactions vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_categtrans_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Catégories transactions</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des catégories transactions vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_messages_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Messages</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des messages vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_reclamations_index') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Réclamations</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des réclamations vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="{{ path('app_statistiques') }}">
+                        <i class="fa fa-2x fa-truck mx-auto mb-4"></i>
+                        <h5 class="mb-2">Statistiques</h5>
+                        <p class="m-0" style="color: #343a40" >La gestion des statistques vous permet de suivre et
+                            d'optimiser l'utilisation de vos ressources, tout en
+                            planifiant efficacement l'entretien et les remplacements nécessaires.</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Service End -->
+
+{% endblock %}

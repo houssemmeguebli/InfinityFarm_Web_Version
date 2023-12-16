@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Les catégories de transactions</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Les catégories de transactions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+
+<br>
+<br>
+<br>
+    <div style="margin: 20px;">
+        <h1 style="color: #8FB31D;">Les catégories de transactions</h1>
+        <br>
+        <table class="table" style="border-collapse: collapse; width: 100%; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color: #3D3635; color: white;">
+                    <th>NomCatTra</th>
+                    <th>DescripCatTra</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for categtran in categtrans %}
+                <tr style="border-bottom: 1px solid #ddd;">                   
+                    <td>{{ categtran.nomCatTra }}</td>
+                    <td>{{ categtran.descripCatTra }}</td>
+                    <td>
+                        <button style="background-color: #4863A0; color: white; border: none; border-radius: 5px; padding: 8px 12px; margin-right: 5px;" onclick="window.location.href='{{ path('app_categtrans_show', {'idCatTra': categtran.idCatTra}) }}'">Afficher</button>
+                        <button style="background-color: #CB6D51; color: white; border: none; border-radius: 5px; padding: 8px 12px;" onclick="window.location.href='{{ path('app_categtrans_edit', {'idCatTra': categtran.idCatTra}) }}'">Modifier</button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center;">Aucun enregistrement trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <button style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px;" onclick="window.location.href='{{ path('app_categtrans_new') }}'">Ajouter</button>
+    </div>
+    </div>
+{% endblock %}

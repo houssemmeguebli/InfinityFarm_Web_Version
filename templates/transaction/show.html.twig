@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block contenu %}
+
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Transaction Details</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Transaction Details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<body>
+    <div style="margin: 20px; background-color: white; color: #C9D1D9; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+        <h1 style="color: #8FB31D;">Transaction Details</h1>
+        <br>
+        <table class="table" style="border-collapse: collapse; width: 100%; margin-bottom: 20px; color: black;">
+            <thead>
+                <tr style="background-color: #3D3635; color: white;">
+                    <th>IdTra</th>
+                    <th>CategTra</th>
+                    <th>TypeTra</th>
+                    <th>DateTra</th>
+                    <th>Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td>{{ transaction.idTra }}</td>
+                <td>{{ transaction.categTra }}</td>
+                <td>{{ transaction.typeTra }}</td>
+                <td>{{ transaction.dateTra ? transaction.dateTra|date('Y-m-d') : '' }}</td>
+                <td>{{ transaction.montant }}</td>
+            </tr>
+            </tbody>
+        </table>
+        
+        <a href="{{ path('app_transaction_index') }}" style="background-color: #8FB31D; color: white; border: none; border-radius: 5px; padding: 10px 15px; text-decoration: none; margin-right: 20px;">Back to List</a>
+        <a href="{{ path('app_transaction_edit', {'idTra': transaction.idTra}) }}" style="background-color: #CB6D51; color: white; border: none; border-radius: 5px; padding: 10px 15px; text-decoration: none;">Edit</a>
+        <br>
+        {{ include('transaction/_delete_form.html.twig') }}
+    </div>
+</body>
+{% endblock %}
+
+
+   
